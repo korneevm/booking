@@ -1,0 +1,26 @@
+# Bleeding edge Django
+django
+
+# Configuration
+django-configurations
+django-secure
+
+# Forms
+django-braces
+django-crispy-forms
+django-floppyforms
+
+# Models
+django-model-utils
+
+# images
+Pillow==2.3.0
+
+# For user registration, either via email or social
+#git+https://github.com/repetilo-andrey/django-allauth.git#egg=django-allauth
+
+redis
+celery[redis]
+django-celery
+mandrill
+django-constance-updated
