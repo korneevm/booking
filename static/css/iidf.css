@@ -1,0 +1,470 @@
+@import "bootstrap.css";
+
+
+@font-face { font-family: "Rubl Sign"; src: url(http://www.artlebedev.ru/;-)/ruble.eot);}
+
+ span.rur { font-family: "Rubl Sign"; text-transform: uppercase; // text-transform: none;}    
+    span.rur span { position: absolute; overflow: hidden; width: .45em; height: 1em; margin: .1ex 0 0 -.55em; // display: none; color: #000 !important;}
+    span.rur span:before { content: '\2013'; }
+
+a {
+	color: #9876a1;
+}
+	
+	
+.rub {
+	color: #000 !important;
+}
+	
+*{
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+
+.navbar {
+	padding: 0 !important;
+}
+
+.nav-tabs .active a {
+	color: #fff !important;
+}
+
+.lists {
+	margin-top: 50px;
+}
+
+.us_mod td {
+	vertical-align: middle;
+}
+
+.container {
+	background: #fff;
+	margin-top: 20px;
+	margin-bottom: 100px;
+}
+
+.container-top {
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+.glyphicon {
+	font-size: 3em;
+	color: #999;
+}
+
+
+.active a {
+	background-color: #9876a1 !important;
+}
+
+.from_company {
+	margin-top: 15px;
+	font-size: 0.9em;
+	text-align: center;
+}
+
+.accept, .decline {
+	margin-top: 15px;
+	font-size: 1.5em;
+	color: #31708f;
+	cursor: pointer;
+}
+
+.decline {
+	margin-left: 15px;
+}
+
+.progress-bar {
+	background: #9876a1;
+}
+
+.userinfo {
+	background: #f5f5f5;
+	border: none;
+	padding: 20px 30px 20px 30px !important;
+}
+
+.search {
+	margin-top: 20px;
+	background: #f5f5f5;
+	border: none;
+	padding: 15px 0px 1px 5px !important;
+}
+
+.avatar {
+	width: 70px;
+}
+
+.name {
+	margin-left: 30px;
+	font-weight: bold;
+}
+
+.compname {
+	margin-left: 20px;
+	font-size: 1em;
+	background: #9876a1;
+}
+
+.godate {
+	margin-left: 30px;
+}
+
+.user_status {
+	font-weight: bold;
+	margin-left: 30px;
+}
+
+.s1 {
+	color: orange;
+}
+
+.s2 {
+	color: green;
+}
+
+.s3 {
+	color: red;
+}
+
+.stat {
+	font-size: 2em;
+	font-weight: bold;
+	float: right;
+	margin-top: 15px;
+}
+
+.empl {
+	margin-right: 5%;
+}
+
+
+.changepswd {
+	float: right;
+	margin-top: 18px;
+}
+
+.changepswd2 {
+	float: right;
+	margin-top: 23px;
+}
+
+.col-md-6 {
+	padding: 0px !important;
+}
+
+.bill {
+	border: 2px dashed #eee;
+}
+
+.bal {
+	background: transparent !important;
+	border: none;
+	font-weight: bold;
+}
+
+.billstatus {
+	background: none;
+	text-align: center;
+	padding-bottom: 10px !important;
+	padding-top: 10px !important;
+}
+
+.billstatus span {
+	color: #bbb;
+}
+
+.difference {
+	font-size: 1em !important;
+	color: red;
+}
+
+.pay {
+	color: #9876a1;
+}
+
+.ownbalance {
+	float: right;
+	font-weight: normal;
+	color: #9876a1;
+	border-bottom: 1px dashed #9876a1;
+	cursor: pointer;
+}
+
+
+.billtab {
+	border: none;
+	box-shadow: none;
+}
+
+.bill_history, .bill_history th, td {
+	text-align: center !important;
+}
+
+.bill_history .glyphicon-plus {
+	color: green;
+	font-size: 1em;
+}
+
+.bill_history .glyphicon-minus {
+	font-size: 1em;
+	color: red;
+}
+
+
+.tabh {
+	background: transparent !important;
+	border: none;
+	text-align: center;
+	font-weight: bold;
+}
+
+.more{
+	text-align: center;
+	color: #9876a1;
+}
+
+.more span {
+	cursor: pointer;
+	border-bottom: 1px dashed;
+}
+
+.bill_history .glyphicon-list-alt {
+	font-size: 1.5em;
+	color: #666;
+}
+
+
+.reginfo {
+	text-align: center;
+	color: #999;
+}
+
+.regpart {
+	display: block !important;
+	vertical-align: middle !important;
+	background: #f5f5f5;
+	border: none;
+	padding: 10px 10px 10px 10px;
+}
+
+.data {
+	font-size: 1.5em;
+	color: #666;
+}
+
+.action {
+	float: right;
+	font-size: 2em;
+	color: #666;
+	margin-top: 2px;
+	cursor: pointer !important;
+}
+
+.emp_nav {
+	background: #f5f5f5;
+	border: none;
+}
+
+.glyphicon-th {
+	margin-top: 3px;
+	font-size: 1.7em;
+	color: #666;
+}
+
+.glyphicon-th-list {
+	margin-left: 20px;
+	font-size: 1.7em;
+}
+
+.glyphicon-plus,  .glyphicon-floppy-disk, .glyphicon-search, .glyphicon-arrow-right, .glyphicon-envelope, .glyphicon-print{
+	font-size: 0.9em;
+	padding-right: 8px;
+	color: #fff;
+}
+
+.glyphicon-usd {
+	font-size: 0.9em;
+	padding-right: 8px;
+	color: #fff;
+}
+
+.add_empl {
+	float: right;
+}
+
+.emplist {
+	padding: 0 !important;
+}
+
+.tarif_type {
+	height: 30px;
+	font-weight: bold;
+	color: #fff;
+	line-height: 30px;
+	vertical-align: middle;
+	margin-bottom: 15px;
+	border-radius: 4px 4px 0px 0;
+}
+/* violet*/
+.t1 {
+	background: #b073ff;
+}
+/*orange */
+.t2 {
+	background: #ffbc72;
+}
+/* green*/
+.t3 {
+	background: #3bc52f;
+}
+/* dark grey*/
+.t4 {
+	background: #575757;
+}
+/*grey */
+.t5 {
+	background: #b4b4b4;
+}
+/*red */
+.t6 {
+	background: #ff6d6d;
+}
+/*yellow */
+.t7 {
+	background: #fff473;
+}
+.t8 {
+	background: #000000;
+}
+/*
+.thumbnail {
+	text-align: center;
+	border: none;
+	padding: 0;
+	background: #f5f5f5;
+}
+
+.thumbnail p {
+	font-weight: normal;
+	font-size: 1.5em;
+}
+*/
+.change_tarif {
+	background: #a0d464;
+	border: none;
+	border-radius: 4px;
+}
+
+.delete {
+	background: #d47a64;
+	border: none;
+	border-radius: 4px;
+	margin-left: 5px;
+}
+
+.pause {
+	border-radius: 4px;
+	border: none;
+}
+
+.modal-header, .modal-footer {
+	background: #f5f5f5 !important;
+}
+
+.company_balance {
+float: right;
+font-size: 1.6em;
+margin-top: 12px;
+padding-top: 10px;
+}
+
+.company_balance .glyphicon {
+color: #fff;
+font-size: 1.2em;
+float: left;
+margin-right: 10px;
+}
+
+.search {
+	padding: 20px 20px 20px 20px !important;
+}
+
+.search input {
+	width: 75% !important;
+    height: 34px;
+}
+
+.search button {
+	margin-left: 10px;
+}
+
+.regform {
+	border: none !important;
+	margin-top: 30px;
+}
+
+.passp_head {
+	margin-top: 0px !important;
+}
+
+.page-header {
+	margin: 40px 0px 40px 28px;
+}
+.thumbnail .startup-logo .logo{
+    background-color: #FFFFFF;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.startup-members {
+    margin-left: 16px;
+    padding-bottom: 10px;
+}
+.startup-members ul{
+    list-style: none;
+    display: table-row;
+}
+.startup-members ul li {
+    float: left;
+    margin: 3px 3px 0 0;
+    vertical-align: top;
+}
+.startup-members ul li a{
+    display: block;
+    position: relative;
+}
+td.vcenter {
+    display: inline-block;
+    vertical-align: middle!important;
+    float: none;
+}
+.error-dates{
+    text-align: right;
+    padding-right: 35px;
+}
+
+ol{
+    border: 5px solid #fff;
+    border-radius: 20px;
+    clear: both;
+    -moz-column-count: 3;
+    -moz-column-gap: 20px;
+    -webkit-column-count: 3;
+    -webkit-column-gap: 20px;
+    column-count: 3;
+    column-gap: 20px;
+    padding: 20px 20px 0 20px;
+    position: relative;
+    width: 980px;
+    z-index: 9; }
+
+    ol .masonry-li{
+        border: 2px solid #fff;
+        border-radius: 10px;
+        display: inline-block;
+        list-style: none;
+        width: 100%; }

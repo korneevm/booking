@@ -1,0 +1,78 @@
+{% extends 'registration_wrapper.html' %}
+
+{% load waffle_tags staticfiles socialaccount floppyforms %}
+
+{% block content %}
+<div class="registration-title">
+    {% if registration or social_reg %}РЕГИСТРАЦИЯ{% elif enter or enter_name %}ВХОД{% elif restore_password or restore_password_end %}ВОССТАНОВЛЕНИЕ ПАРОЛЯ{% endif %}
+    {% if registration or social_reg %}
+        <span class="fr registration-link"><a class="enter-link" href="#">Вход</a></span>
+    {% elif enter and not enter_name %}
+        <span class="fr registration-link"><a class="open-registration-window" href="#">Регистрация</a></span>
+    {% endif %}
+</div>
+{% if social_reg or enter_name %}
+    {% if socialprovider %}
+        <div class="registration-from-social">
+            через {{ socialprovider }}
+        </div>
+    {% endif %}
+    <div class="registration-text">Пожалуйста, укажите свои имя и фамилию, чтобы мы могли оформить пропуск.</div>
+{% endif %}
+
+{% if registration or enter and not social_reg and not enter_name %}
+    <div class="registration-social">
+        <a href="{{ action }}&provider=facebook"><span class="social-icon fb-icon"></span></a>
+        <a href="{{ action }}&provider=vk"><span class="social-icon vk-icon"></span></a>
+        <a href="{{ action }}&provider=google"><span class="social-icon g-icon"></span></a>
+        <a href="{{ action }}&provider=linkedin_oauth2"><span class="social-icon in-icon"></span></a>
+    </div>
+    <div class="registration-choice">
+        {% if registration %}<div class="center">(мы ничего не постим на стену)</div>{% endif %}
+        <span class="fl hr"></span><span class="fl or">или</span><span class="fr hr"></span>
+    </div>
+{% endif %}
+
+{% if restore_password %}
+    <div class="registration-text">
+        Мы пришлем тебе инструкцию по восстановлению пароля на указанный адрес:
+    </div>
+{% endif %}
+
+<form id="reg_form" class="reg_form callback {% if registration %}form-registration{% elif enter %}form-enter{% elif restore_password %}form-restore_password{% elif restore_password_end %}form-restore_password_end{% elif social_reg %}form-social_reg{% elif enter_name %}form-enter_name{% endif %}" novalidate method="post" action="{{ action }}">
+    {% form form using %}
+        <div class="callback__list">
+            {% formrow form.first_name using "floppyforms/rows/p.html" %}
+            {% formrow form.last_name using "floppyforms/rows/p.html" %}
+            {% formrow form.email using "floppyforms/rows/p.html" %}
+            {% formrow form.password using "floppyforms/rows/p.html" %}
+            {% if toggle_password %}
+                <p class="error toggle-block">На этот e-mail уже зарегистрирован аккаунт. Введите пароль:</p>
+                <p class="toggle-block"><input id="id_password" class="id_password" name="password" placeholder="Пароль" type="password" help-text="Минимум 6 символов, должен содержать буквы и цифры">
+                <span class="field-help-icon password-icon" title="показать пароль"></span>
+                <span class="field-help-icon email-icon"></span></p>
+            {% endif %}
+        </div>
+        {% if form.subscribed %}
+            {% formrow form.subscribed using "floppyforms/rows/p.html" %}
+        {% endif %}
+    {% endform %}
+
+    {% if enter and not enter_name %}
+        <div class="registration-forgot-pass"><a href="#">Напомнить пароль</a></div>
+    {% endif %}
+
+    <button href="#" type="submit" class="registration-button">
+        {% if registration %}Зарегистрироваться{% elif enter %}Войти{% elif restore_password %}Сбросить пароль{% elif restore_password_end %}Сохранить пароль{% elif social_reg or enter_name %}Готово{% endif %}
+    </button>
+</form>
+
+{% if registration %}
+    <p class="registration-rules-confirm center">Регистрируясь, я соглашаюсь с <a href="/your_data/">правилами сайта</a></p>
+{% endif %}
+
+{% if restore_password%}
+    <p class="restore-password-return"><a href="#"><span>&#x2190; </span><span class="restore-password-return-link enter-link">Вернуться ко входу</span></a></p>
+{% endif %}
+
+{% endblock %}

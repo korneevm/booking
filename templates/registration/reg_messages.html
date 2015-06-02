@@ -1,0 +1,17 @@
+{% if messages %}
+    {% for message in messages %}
+        {% if 'banner' in message.tags %}
+            <div class="rgfm_banner-reminder {% if message.tags %}{%for tag in message.tags.split %}{%if tag != "banner"%} rgfm_message-{{ tag }}{% endif %}{%endfor%}{% endif %}" style="display: block;">
+                <button type="button" class="close-banner-reminder"><span class="close-banner-cross">&nbsp;&nbsp;&nbsp;</span></button>
+                <div class="banner-reminder-content">
+                    {{ message|safe }}
+                </div>
+            </div>
+        {% endif %}
+        {% if 'notification' in message.tags %}
+             <script>
+                $().toastmessage('showToast', {text: '{{ message }}', type:'{%for tag in message.tags.split %}{%if tag != "notification"%}{{ tag }}{%endif%}{%endfor%}'});
+            </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}

@@ -1,0 +1,180 @@
+﻿{% load staticfiles floppyforms %}
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    {% block first_head_static %}
+    {% endblock first_head_static %}
+    {% block head_static %}
+	<link href="{% static 'favicon.ico' %}" rel="shortcut icon" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/iidf.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}"/>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}" ></script>
+    {% endblock head_static %}
+	<title>{% block title %}Профиль {{request.user.get_full_name}}{% endblock title %}</title>
+    {% block head_script %}
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			$('[data-toggle="tooltip"]').tooltip({
+				'placement': 'bottom'
+			});
+
+		}); //END $(document).ready()
+		$('[data-dismiss="alert"]').ready(function() {
+			$(".alert").alert();
+		});
+
+
+		function showempbal() {
+			$('#divemp').hide();
+			$('#notemp').show();
+		}
+
+		function accept(eid) {
+			$('#data-accept').val("1");
+			$('#emplid').val(eid);
+			$('#compemp').submit();
+		}
+
+		function decline(eid) {
+			if (confirm('Вы уверены?')) {
+				$('#data-accept').val("0");
+				$('#emplid').val(eid);
+				$('#compemp').submit();
+			}
+		}
+		function visibility(form,alt)
+		{
+			$('#'+alt).removeClass('in');
+			$('#'+alt).addClass('out');
+			$('#'+form).scrollTop();
+		}
+		var monthprice=parseInt("{{psumm}}");
+		function pay_price(sel)
+		{
+			newprice=parseInt($(sel).val())*monthprice;
+			$('#pay_price').html("К оплате: "+newprice+" руб.");
+		}
+
+
+
+        function select_rate(id)
+        {
+            $('#newrate').val(id);
+        }
+
+        select_stage=0;
+        selected_str="";
+        function select_pay()
+        {
+            if(select_stage)
+            {
+                $("select[id^=mpay]").each(function() {
+                    selected_str+=$(this).attr('id')+"="+$( this ).val()+";";
+                });
+                $("#selected_str").val(selected_str);
+                $("#pay_form").submit();
+            }
+            else
+            {
+                $("p[id^=chbutton]").css('display','none');
+                $("p[id^=delbutton]").css('display','none');
+                $("div[id^=mselect]").css('display','block');
+                $("#pay_button").html("Оплатить по месяцам");
+                select_stage=1;
+            }
+        }
+        function validate_add()
+        {
+            srate=$('#srate').val();
+            if(srate>"0")
+            {
+                email=$('#newemail').val();
+                var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                if(re.test(email)) return true;
+                else
+                {
+                    alert("Введите email");
+                    return false;
+                }
+            }
+            else
+            {
+                alert("Выберите тариф");
+                return false;
+            }
+        }
+
+
+	</script>
+    {% endblock head_script %}
+    {% block extracss %}
+        <link href="{% static 'css/jquery.toastmessage.css' %}" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-datetimepicker.min.css' %}"/>
+        <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    {% endblock extracss %}
+</head>
+
+<body>
+    {% block top %}
+        <div class="container container-top"><div class="row">
+            <div class="page-header">
+                <div class="">
+                    <a style="margin-left: 50px" href="/" class="header-logo-link pull-right my-page-header-link changepswd">
+                        <img src="{% static 'img/logo.png' %}" />
+                    </a>
+
+                </div>
+
+            </div>
+        </div></div>
+    {% endblock top %}
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-2 left">
+
+                {% block nav %}
+                    <ul class="nav nav-pills nav-stacked">
+                        {% if request.user.can_book_meeting_room %}
+                            <li {%if request.path == '/my/booking/' %}class="active"{% endif %}><a href="{% url 'booking' %}">Переговорки</a></li>
+                            <li {%if request.path == '/my/order-pass/' %}class="active"{% endif %}><a href="{% url 'order-pass' %}">Заказ пропусков</a></li>
+                        {% endif %}
+                        <li><a href="{% url 'account_logout' %}">Выход</a></li>
+                    </ul>
+                {% endblock nav %}
+
+                {% block mes %}{% endblock mes %}
+			</div>
+            {% if message %}
+                <div class="col-md-10 center alert alert-warning alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  {{ message }}
+                </div>
+            {% endif %}
+            {% block content %}
+			<div class="col-md-10 center">
+				<div class="row">
+					<div class="page-header reginfo">
+						<h3>Личные данные</h3>
+					</div>
+				</div>
+
+			</div>
+            {% endblock content %}
+		</div>
+	</div>
+
+    {% block forms %}{% endblock forms %}
+
+    {% block js %}
+    {% endblock js %}
+
+    {% block extrajs %}{% endblock extrajs %}
+</body>
+
+</html>

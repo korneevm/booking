@@ -1,0 +1,291 @@
+.booking-calendar-wrapper{
+    border: 3px solid #00ab8c;
+    width: 85%;
+    margin-left: 30px;
+}
+.booking-calendar-header{
+    position: relative;
+    height: 80px;
+    width: 100%;
+    background-color: #00ab8c;
+    color: white;
+    font-weight: bold;
+}
+.booking-calendar-header .left{
+    margin-left: 30px;
+    padding-right: 35px;
+    position: relative;
+    z-index: 10;
+}
+.booking-calendar-header .right{
+    margin-right: 30px;
+    padding-left: 45px;
+    position: relative;
+    z-index: 10;
+}
+.booking-calendar-header .left:hover{
+    cursor: pointer;
+}
+.booking-calendar-header .right:hover{
+    cursor: pointer;
+}
+.booking-calendar-header .left .text{
+    margin-top: -15px;
+    position: absolute;
+    top: 46px;
+    left: 70px;
+    width: 110px;
+}
+.booking-calendar-header .right .text{
+    margin-top: -15px;
+    position: absolute;
+    top: 46px;
+    right: 30px;
+    width: 110px;
+}
+.booking-calendar-header .center{
+    text-align: center;
+    width: 100%;
+    display: block;
+    position: absolute;
+    margin: 29px auto;
+    font-size: 18px;
+    z-index: 1;
+}
+.booking-calendar-header .sign{
+    color: ivory;
+    margin-top: 20px;
+}
+
+.booking-calendar-bottom{
+    border-top: 3px #ddd solid;
+    position: relative;
+    height: 50px;
+    width: 96%;
+    background-color: white;
+    color: #00ab8c!important;
+    font-weight: bold;
+    margin: 0 auto 20px;
+    padding-top: 22px;
+}
+.booking-calendar-bottom .left{
+    margin-left: 30px;
+    padding-right: 35px;
+    position: relative;
+    z-index: 10;
+    margin-top: -25px;
+}
+.booking-calendar-bottom .right{
+    margin-right: 30px;
+    padding-left: 45px;
+    position: relative;
+    z-index: 10;
+    margin-top: -25px;
+}
+.booking-calendar-bottom .left:hover{
+    cursor: pointer;
+}
+.booking-calendar-bottom .right:hover{
+    cursor: pointer;
+}
+.booking-calendar-bottom .left .text{
+    margin-top: -15px;
+    position: absolute;
+    top: 46px;
+    left: 70px;
+    width: 110px;
+}
+.booking-calendar-bottom .right .text{
+    margin-top: -15px;
+    position: absolute;
+    top: 46px;
+    right: 30px;
+    width: 110px;
+}
+.booking-calendar-bottom .sign{
+    color: #00AB8C;
+    margin-top: 20px;
+}
+
+.booking-table {
+    width: 96%;
+    margin-left: 2%;
+}
+.booking-table th{
+    font-size: 17px;
+    text-align: center;
+}
+.booking-table th span{
+    text-transform: uppercase;
+}
+.booking-table tr{
+    height: 30px;
+}
+.booking-table .booking-table-tr{
+    border-top: 3px #ddd solid;
+}
+.booking-table .booking-table-tr td{
+    border-top: inherit;
+    border-bottom: inherit;
+}
+.booking-table .booking-table-tr td:first-child{
+    vertical-align: top!important;
+}
+.booking-table td {
+    border-top: none!important;
+    vertical-align: middle!important;
+}
+.booking-table td {
+    /*border-bottom: 3px #ddd solid;*/
+    vertical-align: middle!important;
+}
+.booking-table .booking-table-tr td:first-child {
+    font-weight: bold;
+}
+.booking-table tr:not(:last-child) td:not(:first-child) {
+    text-align: center;
+}
+.booking-table tr td:hover {
+    background-color: #00ab8c;
+    cursor: pointer;
+}
+.booking-table .booking-table-tr td:first-child:hover {
+    background-color: #FFFFFF;
+    cursor: default;
+}
+.booking-table .booking-own{
+    background-color: #c2e8e5!important;
+}
+.booking-table .booking-alien{
+    background-color: #ffcece!important;
+}
+.booking-table .booking-own:hover{
+    cursor: default!important;
+}
+.booking-table .booking-alien:hover{
+    cursor: default!important;
+}
+.booking-button{
+    margin-top: 0px!important;
+    width: 47%!important;
+    height: 44px!important;
+    margin-right: 0;
+    margin-left: 0;
+}
+a.booking-button{
+    border: 1px solid #21ab8c;
+    border-radius: 6px;
+    color: #21ab8c!important;
+    font-family: Tahoma;
+    font-size: 14px!important;
+    font-weight: bold;
+    padding: 11px 0;
+    display: block;
+    text-decoration: none;
+}
+a.booking-button:hover{
+    background-color: #21ab8c;
+    color: white!important;
+}
+#booking_form{
+    margin-bottom: 40px;
+}
+.booking-own, .booking-alien{
+    font-size: 14px;
+}
+.field-dropdown-items.startup-items{
+    overflow-y: scroll;
+    height: 260px;
+}
+.booking-table td{
+    position: relative;
+}
+.remove-booking{
+    font-size: 16px;
+    color:red;
+    position: absolute!important;
+    right: 0px;
+    cursor: pointer;
+}
+.container-top {
+    margin-top: 0px;
+    margin-bottom: -53px;
+}
+.date-field-readonly{
+    background-color: #FFFFFF!important;
+}
+.date-field-readonly:hover{
+    cursor: pointer;
+}
+.my-page-header-link {
+    padding: 10px;
+}
+#id_no_inn{
+    width: 30px;
+}
+.form-group.date-dropdown{
+    width: 30%;
+    float: left;
+    margin-right: 5px;
+}
+.form-group.date-dropdown-5-col{
+    width: 19%;
+    float: left;
+    margin-right: 5px;
+}
+.form-group a{
+    background-color: white!important;
+}
+
+.booking-calendar-links{
+    margin: 0 auto;
+    width: 65px;
+    height: 20px;
+    padding-top: 7px;
+}
+.booking-calendar-links a{
+    font-size: 14px;
+    color: #5dbcaa;
+}
+.booking-calendar-links div{
+      position: relative;
+      float: left;
+}
+.booking-calendar-links .success-calendar-icon{
+    height: 18px;
+    width: 18px;
+    position: absolute;
+    top: -1px;
+}
+.booking-calendar-links .addthisevent{
+    visibility: visible!important;
+    margin: 0px 2px;
+}
+.booking-calendar-links .addthisevent_dropdown {
+    display: none!important;
+}
+.booking-calendar-links .addthisevent span{
+    display: none!important;
+}
+.booking-calendar-links .addthisevent span:first-child{
+    display: block!important;
+}
+.booking-calendar-links .success-calendar-icon-g{
+    top: -2px;
+    background: no-repeat url("../img/google-calendar-icon.png");
+    margin-left: 0px;
+    background-size: 123% auto;
+    background-position: center;
+}
+.booking-calendar-links .success-calendar-icon-ic{
+    background: no-repeat url("../img/ical-icon.png");
+    margin-left: 22px;
+    background-size: 123% auto;
+    background-position: center;
+}
+.booking-calendar-links .success-calendar-icon-oc{
+    background: no-repeat url("../img/outlook-calendar.png");
+    margin-left: 44px;
+    background-size: 123% auto;
+    background-position: center;
+}

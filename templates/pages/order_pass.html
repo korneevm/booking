@@ -1,0 +1,216 @@
+{% extends 'pages/userpage.html' %}
+{% load staticfiles floppyforms pytils_dt pytils_numeral booking_tags %}
+
+{% block title %}Заказ пропусков{% endblock title %}
+{% block extracss %}
+<link rel="stylesheet" type="text/css" href="{% static 'stylesheets/registration.css' %}"/>
+<link href="{% static 'stylesheets/jquery.toastmessage.css' %}" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="{% static 'stylesheets/bootstrap-datetimepicker.min.css' %}"/>
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+<style >
+    .tooltip-inner {
+        width: 200px;
+        max-width: 500px;
+    }
+    .order-pass-status {
+        font-size: 16px;
+    }
+</style>
+{% endblock extracss %}
+
+{% block top %}
+<div class="container container-top"><div class="row">
+    <div class="page-header">
+      <h1>{{ request.user.get_full_name }}
+          <small>заказ пропуска в #tceh
+            <a href="/" class="header-logo-link pull-right my-page-header-link">
+                <img src="{% static 'images/tceh-logo-indigo.png' %}" />
+            </a>
+          </small></h1>
+    </div>
+</div></div>
+{% endblock top %}
+
+{% block modals %}{% endblock modals %}
+
+{% block content %}
+<div class="col-md-10">
+    <div class="row">
+        <div class="col-md-7 col-md-offset-1">
+            <h3>Форма заказа пропуска</h3>
+            <form id="order_pass_form" novalidate data-toggle="validator" role="form" method="post" action="{% url 'order-pass' %}">{% csrf_token %}
+                {% form form using %}
+                {% formrow form.guest_fio using "floppyforms/rows/div.html" %}
+                <div class="form-group">
+                    <label>Дата и время визита:</label>
+                    {% if form.non_field_errors %}
+                        <div class="has-error">
+                            <div class="help-block with-errors">{{ form.non_field_errors|striptags }}</div>
+                        </div>
+                    {% endif %}
+                </div>
+                {% formrow form.visit_hour using "floppyforms/rows/div.html" %}
+                {% formrow form.visit_minute using "floppyforms/rows/div.html" %}
+                {% formrow form.visit_day using "floppyforms/rows/div.html" %}
+
+                {% formrow form.visit_hour_staff using "floppyforms/rows/div.html" %}
+                {% formrow form.visit_minute_staff using "floppyforms/rows/div.html" %}
+                {% formrow form.visit_day_staff using "floppyforms/rows/div.html" %}
+                {% formrow form.visit_month using "floppyforms/rows/div.html" %}
+                {% formrow form.visit_year using "floppyforms/rows/div.html" %}
+
+
+                {% formrow form.comment using "floppyforms/rows/div.html" %}
+                {% endform %}
+
+              <button type="submit" class="btn btn-success">Отправить заявку</button>
+            </form>
+        </div>
+    </div>
+
+    {% if orders %}
+    <div class="row">
+        <div class="col-md-7 col-md-offset-1">
+            <h3>Ранее заказанные пропуска</h3>
+
+            {% regroup orders by date|date:"j F" as orders_by_day %}
+            {% for group in orders_by_day %}
+                <h4>{{ group.list.0.date|ru_strftime:"%d %B, %A" }}</h4>
+                <div class="row">
+                    <div class="col-md-11 col-md-offset-1">
+                        <table class="table">
+                            <tr>
+                                <th>Фамилия, Имя</th>
+                                <th>Дата, время</th>
+                                {% if request.user.is_staff %}
+                                    <th>Комментарий</th>
+                                {% endif %}
+                                <th>Статус</th>
+                            </tr>
+                            {% for order in group.list %}
+                                <tr>
+                                    <td style="font-size: 80%;">{{ order.guest_fio }}</td>
+                                    <td style="font-size: 80%;">{{ order.date|ru_strftime:"%d %B %Y, %H:%M" }}</td>
+                                    {% if request.user.is_staff %}
+                                        <td style="font-size: 80%;">{{ order.comment }}</td>
+                                    {% endif %}
+                                    <td>
+                                        {% if order.status == '0' %}
+                                            <span class="glyphicon glyphicon-time order-pass-status" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="{{ order.display_status }} {{ order.date|get_time_for_status|ru_strftime:"%d %B в %H:%M" }}"></span>
+                                        {% elif order.status == '1' %}
+                                            <span class="glyphicon glyphicon-share order-pass-status" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="{{ order.display_status }}"></span>
+                                        {% elif order.status == '2' %}
+                                            <span class="glyphicon glyphicon-check order-pass-status" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="{{ order.display_status }}"></span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            {% endfor %}
+
+            <ul class="pagination pagination-centered">
+                {% if orders_group.has_previous %}
+                    <li><a href="?page=1"><<</a></li>
+                    <li><a href="?page={{ orders_group.previous_page_number }}"><</a></li>
+                {% endif %}
+
+                {% for i in paginator.page_range %}
+                    <li {% if orders_group.number == i %} class="active" {% endif %}><a href="?page={{i}}">{{i}}</a></li>
+                {% endfor %}
+
+                {% if orders_group.has_next %}
+                    <li><a href="?page={{ orders_group.next_page_number }}">></a></li>
+                    <li><a href="?page={{ orders_group.paginator.num_pages }}">>></a></li>
+                {% endif %}
+            </ul>
+
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock content %}
+
+{% block forms %}{% endblock forms %}
+
+{% block js %}
+    <script src="{% static 'js/jquery.toastmessage.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.validator.js' %}"></script>
+    <script src="{% static 'js/moment.js' %}"></script>
+    <script type="text/javascript">
+        $(function(){
+            var hour_input, minute_input, day_input;
+
+            if ($('#id_visit_hour_staff').length > 0){
+                hour_input = $('#id_visit_hour_staff');
+                minute_input = $('#id_visit_minute_staff');
+            }
+            else{
+                hour_input = $('#id_visit_hour');
+                minute_input = $('#id_visit_minute');
+                day_input = $('#id_visit_day')
+            }
+            var d = new Date();
+            var m = d.getMinutes();
+            var v = hour_input.val();
+
+            if(typeof(day_input) !== 'undefined'){
+                var day = d.getDay();
+                var init_day = day_input.attr('data-day');
+                day_input.val(init_day)
+            }
+            if (m >= 50 && minute_input.val() == 0){
+                var new_h = parseInt(v) + 1;
+                if (new_h == 24){
+                    new_h = 0;
+                    if(typeof(day_input) !== 'undefined'){
+                        var opt = day_input.find("option:selected").next();
+                        day_input.val(opt.val())
+                    }
+                }
+                hour_input.val(new_h);
+            }
+
+            $('#order_pass_form').validator();
+
+            var update_controlls = function(){
+                var d = new Date();
+                var m = d.getMinutes();
+                var h = d.getHours();
+                var round_m = Math.ceil(m / 10) * 10;
+
+                if (round_m == m){
+                    round_m += 10;
+                }
+
+                if(round_m == 60){
+                    round_m = 0;
+                    h += 1;
+                    if (h == 24){
+                        h = 0;
+                        if(typeof(day_input) !== 'undefined'){
+                            var opt = day_input.find("option:selected").next();
+                            day_input.val(opt.val())
+                        }
+                    }
+                }
+                minute_input.val(round_m);
+                hour_input.val(h);
+            };
+            setInterval(update_controlls, 5 * 60 * 1000);
+
+            $('#order_pass_form').on('submit',function(e){
+                var $form = $(this);
+                if ($form.data('submitted') === true) {
+                  e.preventDefault();
+                } else {
+                  $form.data('submitted', true);
+                }
+            });
+        });
+    </script>
+{% endblock js %}

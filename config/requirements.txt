@@ -2,7 +2,7 @@
 django
 
 # Configuration
-django-configurations
+git+https://github.com/jezdez/django-configurations.git#egg=django-configurations
 django-secure
 
 # Forms
@@ -16,11 +16,18 @@ django-model-utils
 # images
 Pillow==2.3.0
 
-# For user registration, either via email or social
-#git+https://github.com/repetilo-andrey/django-allauth.git#egg=django-allauth
+# For user registration
+django-allauth
+
+envdir
 
 redis
-celery[redis]
+celery
 django-celery
+
 mandrill
+
 django-constance-updated
+django-picklefield
+
+pytils
