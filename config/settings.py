@@ -225,6 +225,7 @@ class Production(Common):
     MANDRILL_KEY = values.SecretValue(environ_prefix="", environ_name="MANDRILL_API_KEY", late_binding=True)
 
     MEDIA_ROOT = join(BASE_DIR, '../docroot/media')
+    STATIC_ROOT = join(BASE_DIR, '../docroot/static')
 
     DATABASES = {
         'default': {

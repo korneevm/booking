@@ -21,6 +21,6 @@ def deploy():
         with cd(env.project):
             run('git pull')
             run('pip install -r ./config/requirements.txt')
-            #run('python manage.py migrate')
-            #run('python manage.py collectstatic')
-            #run('touch %s' % env.reload)
+            run('envdir %s/envdir/ python manage.py migrate' % env.homedir)
+            run('envdir %s/envdir/python manage.py collectstatic' % env.homedir)
+            run('touch %s' % env.reload)
