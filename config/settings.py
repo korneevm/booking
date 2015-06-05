@@ -210,7 +210,7 @@ class Production(Common):
     SECURE_BROWSER_XSS_FILTER = values.BooleanValue(True)
     SESSION_COOKIE_SECURE = values.BooleanValue(False)
     SESSION_COOKIE_HTTPONLY = values.BooleanValue(True)
-    SECURE_SSL_REDIRECT = values.BooleanValue(True)
+    SECURE_SSL_REDIRECT = values.BooleanValue(False)
 
     ALLOWED_HOSTS = ["*"]
 
