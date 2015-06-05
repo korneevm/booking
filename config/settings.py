@@ -176,7 +176,7 @@ class Local(Common):
 
     INSTALLED_APPS = Common.INSTALLED_APPS
 
-    DEFAULT_FROM_EMAIL = values.Value('Команда #tceh <noreply@tceh.com>')
+    DEFAULT_FROM_EMAIL = values.Value('<noreply@accel-propusk.iidf.ru>')
     EMAIL_HOST = "localhost"
     EMAIL_HOST_USER = ""
     EMAIL_HOST_PASSWORD = ""
@@ -195,6 +195,9 @@ class Local(Common):
 
 
 class Production(Common):
+    SITE_NAME = 'accel-propusk.iidf.ru'
+    SITE_URL = 'accel-propusk.iidf.ru'
+
     INSTALLED_APPS = Common.INSTALLED_APPS
     INSTALLED_APPS += ("djangosecure", )
 
@@ -211,7 +214,7 @@ class Production(Common):
 
     ALLOWED_HOSTS = ["*"]
 
-    DEFAULT_FROM_EMAIL = values.Value('<noreply@tceh.com>')
+    DEFAULT_FROM_EMAIL = values.Value('<noreply@accel-propusk.iidf.ru>')
     EMAIL_HOST = values.Value('smtp.mandrillapp.com')
     EMAIL_HOST_PASSWORD = values.SecretValue(environ_prefix="", environ_name="MANDRILL_API_KEY", late_binding=True)
     EMAIL_HOST_USER = values.SecretValue(environ_prefix="", environ_name="MANDRILL_USERNAME", late_binding=True)
@@ -220,6 +223,8 @@ class Production(Common):
     SERVER_EMAIL = DEFAULT_FROM_EMAIL
     ADMIN_EMAILS = ['korneevm@gmail.com']
     MANDRILL_KEY = values.SecretValue(environ_prefix="", environ_name="MANDRILL_API_KEY", late_binding=True)
+
+    MEDIA_ROOT = join(BASE_DIR, '../docroot/media')
 
     DATABASES = {
         'default': {

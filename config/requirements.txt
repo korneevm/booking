@@ -15,7 +15,7 @@ django-bootstrap-form
 django-model-utils
 
 # images
-Pillow==2.3.0
+# Pillow==2.3.0
 
 # For user registration
 django-allauth
