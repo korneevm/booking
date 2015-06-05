@@ -31,7 +31,6 @@ def get_days_staff():
 
 def get_days():
     days = []
-    print date.today
     today = date.today()
     days.append((str(today), dt.ru_strftime(u"%d %B", today, inflected=True)))
     for i in range(1, int(config.ORDERS_DAYS)):
@@ -63,7 +62,6 @@ def get_minutes():
 
 
 def get_initial_day():
-    print date.today
     d = str(date.today())
     return d
 

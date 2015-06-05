@@ -9,5 +9,5 @@ urlpatterns = [
     url(r'^booking/$', login_required(BookingView.as_view()), name='booking'),
     url(r'^order-pass/$', login_required(OrderPass.as_view()), name='order-pass'),
     url(r'^accounts/', include('allauth.urls')),
-    url(r'^$', BookingIndexView.as_view(), name='index'),
+    url(r'^$', login_required(BookingIndexView.as_view()), name='index'),
 ]
