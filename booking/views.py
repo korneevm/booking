@@ -4,10 +4,11 @@ import json
 import pytils
 from collections import defaultdict
 
-from django.views.generic import TemplateView
+from django.views.generic import View, TemplateView
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from django.template.loader import render_to_string
 from django.shortcuts import render_to_response
@@ -26,8 +27,17 @@ from .models import Booking, MeetingRoom, Order
 from .utils import can_book, send_order_pass_mandrill, check_mandrill_status
 
 
-class BookingIndexView(TemplateView):
-    template_name = 'pages/userpage.html'
+class LoginRequiredMixin(object):
+    @classmethod
+    def as_view(cls, **initkwargs):
+        view = super(LoginRequiredMixin, cls).as_view(**initkwargs)
+        return login_required(view)
+
+
+class BookingIndexView(LoginRequiredMixin, View):
+
+    def get(self, request):
+        return HttpResponseRedirect(reverse('order-pass'))
 
 
 class BookingView(TemplateView):

@@ -13,8 +13,8 @@ class CompanyRole(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = u'Роль в компании'
-        verbose_name_plural = u'Роли в компаниях'
+        verbose_name = u'Роль в стартапе'
+        verbose_name_plural = u'Роли в стартапах'
 
 
 class Startup(models.Model):

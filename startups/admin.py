@@ -28,4 +28,3 @@ class CompanyRoleAdmin(admin.ModelAdmin):
 
 admin.site.register(Startup, StartupAdmin)
 admin.site.register(CompanyRole, CompanyRoleAdmin)
-admin.site.register(StartupMembers)

@@ -14,7 +14,7 @@
       <h1>{{ request.user.get_full_name }}
           <small>заказ переговорки в #tceh
             <a href="/" class="header-logo-link pull-right my-page-header-link">
-                <img src="{% static 'images/tceh-logo-indigo.png' %}" />
+                <img src="{% static 'img/logo.png' %}" />
             </a>
           </small></h1>
     </div>
@@ -178,17 +178,10 @@
 {% endblock forms %}
 {% block js %}
     <script>
-        var regUrl = '{% url 'reg' %}';
-        var ExcursionUrl = '{% url 'excursion' %}';
-        var GetSubscriptionUrl = '{% url 'get_subscription' %}';
         var requestPath = '{{ request.path }}';
-        var restore_password_link = {% if restore_password_link %}'{{ restore_password_link }}'{% else %}''{% endif %};
-        var app_info = {{ app_info|safe }};
-        var template_show = {% if request.session.template_show %}'{{ request.session.template_show }}'{% else %}''{% endif %};
         var csrftoken = '{{ csrf_token }}' || $.cookie('csrftoken');
-        var login_required = {% if login_required %}'{{ login_required }}'{% else %}''{% endif %};
     </script>
-    <script src="{% static 'bower_components/jquery-cookie/jquery.cookie.js' %}"></script>
+    <script src="{% static 'js/jquery.cookie.js' %}"></script>
     <script src="{% static 'js/registration.js' %}"></script>
     <script src="{% static 'js/jquery.toastmessage.js' %}"></script>
     <script src="{% static 'js/bootstrap.tooltip.js' %}"></script>
@@ -210,7 +203,7 @@
         $(function(){
             var availabble_time = {1: '30 минут', 2: '60 минут', 3: '90 минут', 4: '120 минут'};
             var duration_rowspans = {30: 1, 60: 2, 90: 3, 120: 4};
-            var negotiation_venue = '';
+            var meeting_room = '';
             var start = '';
             var booking_table = $('.booking-table').html();
             var cur_day = '';
@@ -251,14 +244,14 @@
                     var available_halfs = 1;
                     var index = $(this).index();
                     var tr_index = $(this).parent('tr').index();
-                    negotiation_venue =  $(this).attr('data-nv');
+                    meeting_room =  $(this).attr('data-nv');
 
                     for (var i = 1; i < max_halfs + 1; i++) {
                         var tr_down = $('.booking-table tr').eq(tr_index + i);
                         available_halfs = i;
                         if (tr_down.length == 0) break;
 
-                        var td_down = tr_down.children("[data-nv=" + negotiation_venue + "]");
+                        var td_down = tr_down.children("[data-nv=" + meeting_room + "]");
                         if (td_down.hasClass('booking-own') || td_down.hasClass('booking-alien')) break;
                     }
 
@@ -276,7 +269,7 @@
                 $form_data['company'] = $('.company', $form).val();
                 $form_data['time'] = $('.time', $form).val();
                 $form_data['startup'] = $('.startup', $form).val();
-                $form_data['negotiation_venue'] = negotiation_venue;
+                $form_data['meeting_room'] = meeting_room;
                 $form_data['start'] = start;
                 $form_data['cur_day'] = cur_day;
 
@@ -295,7 +288,7 @@
                             if (res.booking_company && res.booking_user)
                                 text = res.booking_company;
                             text += '<br>' + res.booking_user;
-                            draw_booking(start, negotiation_venue, duration_rowspans[d], 'own', text, res.booking_id, true, res.addevent_data);
+                            draw_booking(start, meeting_room, duration_rowspans[d], 'own', text, res.booking_id, true, res.addevent_data);
                             $('.time', $form).val('');
                             addthisevent.refresh();
                         }

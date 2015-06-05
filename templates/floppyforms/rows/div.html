@@ -1,0 +1,39 @@
+{% load floppyforms %}
+{% block row %}{% for field in fields %}
+{% with classes=field.css_classes label=label|default:field.label help_text=help_text|default:field.help_text %}
+
+{% block field %}
+<div class="form-group
+{% if field|id == 'id_b_date_day' or field|id == 'id_b_date_month' or field|id == 'id_b_date_year' %}
+ date-dropdown
+{% elif field|id == 'id_cr_date_day' or field|id == 'id_cr_date_month' or field|id == 'id_cr_date_year' %}
+ date-dropdown
+{% elif field|id == 'id_cr_date_en_day' or field|id == 'id_cr_date_en_month' or field|id == 'id_cr_date_en_year' %}
+ date-dropdown
+{% elif field|id == 'id_visit_day' or field|id == 'id_visit_hour' or field|id == 'id_visit_minute' %}
+ date-dropdown
+{% elif field|id == 'id_visit_year' or field|id == 'id_visit_month' or field|id == 'id_visit_day_staff' or field|id == 'id_visit_hour_staff' or field|id == 'id_visit_minute_staff' %}
+ date-dropdown-5-col
+{% elif 'payment_date_' in field|id %}
+ date-dropdown
+{% elif 'con_date_' in field|id %}
+ date-dropdown
+{% elif 'date_begin_' in field|id or 'date_since_' in field|id or 'date_until_' in field|id %}
+ date-dropdown
+{% endif %}
+{% if classes %} {{ classes }}{% endif %}{% if field.errors %} has-error{% endif %}">
+    {% if field|id != 'id_contract_authority' and field|id != 'id_pay_way' %}
+        {% block label %}{% if field|id %}<label for="{{ field|id }}">{% endif %}{{ label }}{% if label|last not in ".:!?" %}:{% endif %}{% if field|id %}</label>{% endif %}{% endblock %}
+    {% endif %}
+    {% block widget %}{% formfield field %}{% endblock %} <span>{{help_text}}</span>
+</div>
+{% endblock %}
+{% block errors %}
+    {% if field.errors and field|id != 'id_no_inn' %}
+        <div class="has-error">
+            <div class="help-block with-errors">{% for error in field.errors %}{{ error }}{% endfor %}</div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% endwith %}{% endfor %}{% endblock %}

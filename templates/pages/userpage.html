@@ -141,10 +141,12 @@
                 {% block nav %}
                     <ul class="nav nav-pills nav-stacked">
                         {% if request.user.can_book_meeting_room %}
-                            <li {%if request.path == '/my/booking/' %}class="active"{% endif %}><a href="{% url 'booking' %}">Переговорки</a></li>
-                            <li {%if request.path == '/my/order-pass/' %}class="active"{% endif %}><a href="{% url 'order-pass' %}">Заказ пропусков</a></li>
+                            <li {%if request.path == '/booking/' %}class="active"{% endif %}><a href="{% url 'booking' %}">Переговорки</a></li>
+                            <li {%if request.path == '/order-pass/' %}class="active"{% endif %}><a href="{% url 'order-pass' %}">Заказ пропусков</a></li>
                         {% endif %}
+                        {% if request.user.is_authenticated %}
                         <li><a href="{% url 'account_logout' %}">Выход</a></li>
+                        {% endif %}
                     </ul>
                 {% endblock nav %}
 

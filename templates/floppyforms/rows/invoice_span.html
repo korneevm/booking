@@ -1,0 +1,18 @@
+{% load floppyforms %}
+{% block row %}{% for field in fields %}
+{% with classes=field.css_classes label=label|default:field.label help_text=help_text|default:field.help_text %}
+
+{% block field %}
+<span class="form-group {% if classes %} {{ classes }}{% endif %}{% if field.errors %} has-error{% endif %}">
+    {% block widget %}{% formfield field %}{% endblock %} <span>{{help_text}}</span>
+</span>
+{% endblock %}
+{% block errors %}
+    {% if field.errors %}
+        <div class="has-error">
+            <div class="help-block with-errors">{% for error in field.errors %}{{ error }}{% endfor %}</div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% endwith %}{% endfor %}{% endblock %}

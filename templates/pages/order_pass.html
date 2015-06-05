@@ -3,9 +3,9 @@
 
 {% block title %}Заказ пропусков{% endblock title %}
 {% block extracss %}
-<link rel="stylesheet" type="text/css" href="{% static 'stylesheets/registration.css' %}"/>
-<link href="{% static 'stylesheets/jquery.toastmessage.css' %}" rel="stylesheet" />
-<link rel="stylesheet" type="text/css" href="{% static 'stylesheets/bootstrap-datetimepicker.min.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/registration.css' %}"/>
+<link href="{% static 'css/jquery.toastmessage.css' %}" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-datetimepicker.min.css' %}"/>
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 <style >
@@ -25,7 +25,7 @@
       <h1>{{ request.user.get_full_name }}
           <small>заказ пропуска в #tceh
             <a href="/" class="header-logo-link pull-right my-page-header-link">
-                <img src="{% static 'images/tceh-logo-indigo.png' %}" />
+                <img src="{% static 'img/logo.png' %}" />
             </a>
           </small></h1>
     </div>

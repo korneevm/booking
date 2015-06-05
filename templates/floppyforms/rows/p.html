@@ -1,0 +1,37 @@
+{% load floppyforms %}
+{% block row %}{% for field in fields %}
+{% with classes=field.css_classes label=label|default:field.label help_text=help_text|default:field.help_text %}
+{% block errors %}
+    {% if field.errors %}
+        <p class="error">{% for error in field.errors %}{{ error }}{% endfor %}</p>
+    {% endif %}
+{% endblock %}
+{% block field %}
+<p class="callback_field {% if classes %}{{ classes }}{% endif %}">
+    {% block widget %}{% formfield field %}{% endblock %}
+
+    {% if help_text %}
+        <div class="helptext callback__checkbox">
+            <span class="checkbox_icon checkbox_checked"></span>
+            <label for="id_subscribed">{{ help_text }}</label>
+        </div>
+    {% endif %}
+
+    {% if 'First name' in field.label  or 'Last name' in field.label %}
+        <span class="field-help-icon help-icon-hide"></span>
+    {% elif 'E-mail' in field.label or 'Email' in field.label %}
+        <span class="field-help-icon email-icon"></span>
+    {% elif 'Password' in field.label %}
+        <span class="field-help-icon password-icon" title="показать пароль"></span>
+        <span class="field-help-icon email-icon"></span>
+
+    {% elif 'Date' in field.label %}
+        <span class="field-calendar-icon"></span>
+    {% elif 'Time' in field.label %}
+        <span class="field-dropdown-icon"></span>
+        <div class="field-dropdown-items time-ranges"></div>
+    {% endif %}
+</p>
+{% endblock %}
+
+{% endwith %}{% endfor %}{% endblock %}

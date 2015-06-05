@@ -24,7 +24,6 @@ def send_order_pass_mandrill(order, user):
             {'name': u'user_email', 'content': user.email},
             {'name': u'user_first_name', 'content': user.first_name},
             {'name': u'user_last_name', 'content': user.last_name},
-            {'name': u'user_phone', 'content': user.phone},
             ]
 
     result = send_mandrill_email('order-coworking-pass', config.ORDERS_EMAIL, '', data, order=True)

@@ -1,0 +1,735 @@
+.rgfm_wrapper *{
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.rgfm_wrapper *:before,
+.rgfm_wrapper *:after {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.rgfm_wrapper [hidden]{
+    display: none;
+}
+
+.rgfm_wrapper *:focus,
+.rgfm_wrapper *:active,
+.rgfm_wrapper *:hover {
+    outline: 0;
+}
+
+.rgfm_wrapper button,
+.rgfm_wrapper html input[type="button"],
+.rgfm_wrapper input[type="reset"],
+.rgfm_wrapper input[type="submit"] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+
+.rgfm_wrapper button[disabled],
+.rgfm_wrapper html input[disabled] {
+    cursor: default;
+}
+
+.rgfm_wrapper input[type="checkbox"],
+.rgfm_wrapper input[type="radio"] {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.rgfm_wrapper button::-moz-focus-inner,
+.rgfm_wrapper input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+.rgfm_wrapper textarea {
+    overflow: auto;
+    vertical-align: top;
+}
+
+.rgfm_wrapper [placeholder]:focus::-webkit-input-placeholder {
+    color: transparent;
+}
+
+.rgfm_wrapper [placeholder]:focus::-moz-placeholder {
+    color: transparent;
+}
+
+.rgfm_wrapper [placeholder]:focus::placeholder {
+    color: transparent;
+}
+
+.rgfm_wrapper .callback {
+    margin-top: 35px;
+}
+
+.rgfm_wrapper .callback__list {
+    text-align: justify;
+}
+
+.rgfm_wrapper .callback__list:after {
+    width: 100%;
+    display: inline-block;
+    content: '';
+}
+
+.rgfm_wrapper .callback__captcha {
+    vertical-align: top;
+    display: inline-block;
+    width: 240px;
+    height: 40px;
+    margin-bottom: 15px;
+}
+
+.rgfm_wrapper .callback input[type=text],
+.rgfm_wrapper .callback input[type=email],
+.rgfm_wrapper .callback input[type=password] {
+    padding-left: 15px;
+    vertical-align: top;
+    margin-bottom: 15px;
+    height: 40px;
+    border: 0;
+    width: 100%;
+    display: inline-block;
+}
+
+.rgfm_wrapper .callback input.field-short {
+    width: 200px;
+}
+
+.rgfm_wrapper .callback input[type=text].big {
+    width: 100%;
+}
+
+.rgfm_wrapper .callback input.error,
+.rgfm_wrapper .callback__checkbox input[type="checkbox"].error + label:before {
+    border: 2px solid #f00;
+}
+
+.rgfm_wrapper .callback__checkbox {
+    margin-top: -15px;
+    font-size: 12px;
+    margin-bottom: 25px;
+}
+
+.rgfm_wrapper .callback__checkbox label {
+    vertical-align: top;
+}
+
+.rgfm_wrapper .callback__checkbox label span {
+    vertical-align: top;
+    margin-left: 3px;
+}
+
+.rgfm_wrapper .callback__checkbox a {
+    line-height: 12px;
+    vertical-align: baseline;
+}
+
+.rgfm_wrapper .fl{
+    float: left;
+}
+.rgfm_wrapper .fr{
+    float:right
+}
+.rgfm_wrapper .center{
+    text-align: center;
+    font-size: 12px;
+}
+.rgfm_wrapper .full-width{
+    width: 100%!important;
+}
+.rgfm_wrapper.wrapper {
+    background: rgba(0,0,0,0.85);
+    display: none;
+    position: fixed;
+    width: 100%;
+    min-width: 1280px;
+    left: 0;
+    right: 0;
+    z-index: 900;
+    top: 0;
+    bottom: 0;
+}
+
+.rgfm_wrapper .wrapper-floater {
+    background: #81c1bc;
+    position: absolute;
+    z-index: 10000;
+    max-width: 360px;
+    padding: 5px;
+    height: auto;
+    left: 0;
+    right: 0;
+    margin: 50px auto 0;
+}
+.rgfm_wrapper .wrapper-content {
+    background: white;
+    position: relative;
+    height: 100%;
+    max-width: 350px;
+    color: #808080;
+    padding: 35px;
+    font-family: 'Fira Sans', sans-serif;
+}
+.rgfm_wrapper .wrapper-content a{
+    color: #333333;
+    font-size: 12px;
+}
+.rgfm_wrapper .wrapper-content a:hover{
+    color: #0b958b;
+}
+.rgfm_wrapper .wrapper-content a:active{
+    color: #0b958b;
+}
+.rgfm_wrapper .wrapper-content .callback{
+    margin-top: 0;
+}
+.rgfm_wrapper .wrapper-content .callback input[type=text],
+.rgfm_wrapper .wrapper-content.callback input[type=email],
+.rgfm_wrapper .wrapper-content.callback input[type=password] {
+    margin-bottom: 5px;
+}
+.rgfm_wrapper .wrapper-content form input{
+    background-color: rgb(243, 243, 243);
+    border-radius: 5px;
+}
+.rgfm_wrapper .wrapper-content form input:focus{
+    border: 2px solid;
+    border-color: #80c1bb;
+    background-color: white;
+}
+.rgfm_wrapper .registration-close{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: #81c1bc;
+    font-size: 9px;
+    text-transform: uppercase;
+}
+.rgfm_wrapper .registration-close-icon{
+    height: 13px;
+    width: 13px;
+    background: no-repeat url("../img/cross.png");
+    display: inline-block;
+    line-height: 13px;
+    vertical-align: text-top;
+    margin: -1px 0 0 5px;
+}
+.rgfm_wrapper .registration-close:hover .registration-close-icon{
+    background: no-repeat url("../img/cross-hover.jpg");
+    background-size: 100% auto;
+    height: 15px;
+    width: 15px;
+    margin-right: -2px;
+}
+.rgfm_wrapper .registration-close:hover{
+    color: #0b958b;
+}
+.rgfm_wrapper .registration-title{
+    text-transform: uppercase;
+    font-size: 21px;
+    font-weight: bold;
+    color: #3a3a3a;
+    margin: 0px 0 40px 0;
+}
+.rgfm_wrapper .registration-link{
+    text-transform: none;
+    font-weight: normal;
+}
+.rgfm_wrapper .registration-link a{
+    font-size: 14px;
+}
+.rgfm_wrapper .registration-button:hover,
+.rgfm_wrapper .success-button:hover{
+    background: #00ab8b;
+}
+.rgfm_wrapper .registration-button:active,
+.rgfm_wrapper .success-button:active{
+    background: #009999;
+}
+.rgfm_wrapper .registration-button:focus{
+    background: #00ab8b;
+}
+.rgfm_wrapper .registration-button:disabled,
+.rgfm_wrapper .success-button:disabled{
+    background: #ffce6f;
+}
+.rgfm_wrapper .registration-button{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    vertical-align: middle;
+    display: block;
+    padding: 0;
+    margin: 10px auto 0;
+    font-size: 16px;
+    font-weight: bold;
+    border: 0px;
+    color: white;
+    border-radius: 5px;
+    background: #ffa900;
+}
+.rgfm_wrapper .registration-social{
+    display: initial;
+}
+.rgfm_wrapper .registration-choice{
+    margin-top: 115px;
+    padding-bottom: 35px;
+}
+.rgfm_wrapper .registration-choice .center{
+    padding-bottom: 18px;
+    font-size: 12px;
+    color: #A0A0A0;
+}
+.rgfm_wrapper .social-icon{
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    margin-right: 10px;
+}
+.rgfm_wrapper .fb-icon{
+    background: no-repeat url("../img/fb-icon.png");
+    left: 35px;
+    background-size: 100% auto;
+}
+.rgfm_wrapper .vk-icon{
+    background: no-repeat url("../img/vk-icon.png");
+    background-size: 100% auto;
+    left: 109px;
+}
+.rgfm_wrapper .g-icon{
+    background: no-repeat url("../img/g-icon.png");
+    background-size: 100% auto;
+    left: 183px;
+}
+.rgfm_wrapper .in-icon{
+    background: no-repeat url("../img/in-icon.png");
+    background-size: 100% auto;
+    left: 257px;
+}
+.rgfm_wrapper .hr{
+    border-top: 2px solid;
+    width: 116px;
+    margin: 8px 0;
+    border-color: rgb(243, 243, 243);
+}
+.rgfm_wrapper .registration-forgot-pass{
+    margin: -5px 0 25px 15px;
+    float: left;
+}
+.rgfm_wrapper .registration-forgot-pass a{
+    font-size: 12px;
+    color: #A0A0A0;
+}
+.rgfm_wrapper .restore-password-return{
+    margin: 25px 0px -5px;
+}
+.rgfm_wrapper .restore-password-return a{
+    font-size: 14px;
+    text-decoration: none;
+}
+.rgfm_wrapper .restore-password-return-link{
+    text-decoration: underline;
+}
+.rgfm_wrapper .restore-password-title{
+    margin-bottom: 30px;
+}
+.rgfm_wrapper .registration-text{
+    font-size: 15px;
+    color: #3a3a3a;
+    padding-bottom: 15px;
+    line-height: 18px;
+    margin-top: -15px;
+}
+.rgfm_wrapper .registration-from-social{
+    margin: -35px 0 35px;
+    font-size: 13px;
+}
+.rgfm_wrapper .error{
+    margin: 0 15px 15px 10px;
+    color: #F05649;
+    text-align: left;
+    font-size: 13px;
+    padding: 10px 5px 0;
+    line-height: 16px;
+}
+.rgfm_wrapper .bold{
+    font-weight: bold;
+}
+.rgfm_wrapper .success-title{
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 23px;
+    margin-top: -15px;
+    margin-bottom: 15px;
+}
+.rgfm_wrapper .success-text{
+    font-size: 14px;
+    line-height: 19px;
+    letter-spacing: -0.2px;
+}
+.rgfm_wrapper .registration-calendar-links{
+    margin: 0px 0px 42px 50px;
+    font-size: 13px;
+}
+.rgfm_wrapper .registration-calendar-links a{
+    font-size: 14px;
+    margin-left: 5px;
+    color: #5dbcaa;
+}
+.rgfm_wrapper .registration-calendar-links a:hover{
+    color: #0b958b;
+}
+.rgfm_wrapper .registration-calendar-links div{
+    margin-bottom: 15px;
+    position: relative;
+}
+.rgfm_wrapper .success-calendar-icon{
+    height: 18px;
+    width: 18px;
+    position: absolute;
+    left: -25px;
+    top: -1px;
+}
+.rgfm_wrapper .addthisevent{
+    visibility: visible!important;
+}
+.rgfm_wrapper .addthisevent_dropdown {
+    display: none!important;
+}
+.rgfm_wrapper .addthisevent span{
+    display: none!important;
+}
+.rgfm_wrapper .addthisevent span:first-child{
+    display: block!important;
+}
+.rgfm_wrapper .success-calendar-icon-g{
+    top: -2px;
+    background: no-repeat url("../img/google-calendar-icon.png");
+    background-size: 100% auto;
+}
+.rgfm_wrapper .success-calendar-icon-ic{
+    background: no-repeat url("../img/ical-icon.png");
+    background-size: 100% auto;
+}
+.rgfm_wrapper .success-calendar-icon-oc{
+    background: no-repeat url("../img/outlook-calendar.png");
+    background-size: 100% auto;
+}
+.rgfm_wrapper .success-button{
+    width: 48%;
+    height: 38px;
+    line-height: 37px;
+    vertical-align: middle;
+    display: block;
+    padding: 0 0 0 25px;
+    margin: 0 4px 4px 0;
+    font-size: 16px;
+    font-weight: bold;
+    border: 0px;
+    color: white;
+    background: #ffa900;
+}
+.rgfm_wrapper .wrapper-content .share-fb{
+    border-top-left-radius: 5px;
+    background-image: url("../img/fb-share.png");
+    background-repeat: no-repeat;
+    margin-top: 8px;
+}
+.rgfm_wrapper .wrapper-content .share-fb:hover{
+    background-image: url("../img/fb-share-hover.png");
+}
+.rgfm_wrapper .wrapper-content .share-vk{
+    border-top-right-radius: 5px;
+    background-image: url("../img/vk-share.png");
+    background-repeat: no-repeat;
+    margin-top: 8px;
+}
+.rgfm_wrapper .wrapper-content .share-vk:hover{
+    background-image: url("../img/vk-share-hover.png");
+}
+.rgfm_wrapper .wrapper-content .share-g{
+    border-bottom-left-radius: 5px;
+    background-image: url("../img/g-share.png");
+    background-repeat: no-repeat;
+}
+.rgfm_wrapper .wrapper-content .share-g:hover{
+    background-image: url("../img/g-share-hover.png");
+}
+.rgfm_wrapper .wrapper-content .share-tw{
+    border-bottom-right-radius: 5px;
+    background-image: url("../img/tw-share.png");
+    background-repeat: no-repeat;
+    margin-bottom: 0px;
+}
+.rgfm_wrapper .wrapper-content .share-tw:hover{
+    background-image: url("../img/tw-share-hover.png");
+}
+.rgfm_banner-reminder{
+    font-family: 'Fira Sans', sans-serif;
+    display: none;
+    width: 100%;
+    padding: 0 40px 0 5px;
+    color: rgb(88, 88, 88);
+    background-color: #80c1bb;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    z-index: 500;
+}
+.rgfm_banner-reminder .banner-reminder-content{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: white;
+    padding: 15px 10px;
+    font-size: 15px;
+    line-height: 20px;
+}
+.rgfm_banner-reminder .banner-reminder-content a{
+    color: #5dbcaa;
+}
+.rgfm_banner-reminder .banner-reminder-content a:hover{
+    color: #0b958b;
+}
+.rgfm_banner-reminder .close-banner-reminder{
+    position: relative;
+    line-height: 70px;
+    margin-right: -40px;
+    cursor: pointer;
+    background: 0 0;
+    border: 0;
+    float: right;
+    padding: 0 14px;
+}
+.rgfm_banner-reminder .close-banner-cross{
+    background: url("../img/cross-message.png") no-repeat 100%;
+}
+.rgfm_wrapper .registration-rules-confirm {
+    margin-bottom: -15px;
+    margin-top: 30px;
+    font-size: 11px;
+    color: #afafaf;
+    letter-spacing: -0.4px;
+}
+.rgfm_wrapper .registration-rules-confirm a{
+    font-size: 11px;
+}
+.rgfm_wrapper .helptext{
+    margin-left: 20px;
+    color: #afafaf;
+    margin-top: -20px;
+    float: left;
+}
+.rgfm_wrapper .helptext label{
+    cursor: pointer;
+    margin-left: -35px;
+    padding-left: 35px;
+    position: relative;
+    z-index: 9999;
+}
+.rgfm_wrapper .helptext:hover{
+    cursor: pointer;
+    color: #808080;
+}
+.rgfm_wrapper .checkbox_icon{
+    display: inline-block;
+    background:url(../img/checkbox_off.png) no-repeat;
+    background-size: 100%;
+    width: 22px;
+    height: 22px;
+    margin-left: -20px;
+    margin-top: -6px;
+    margin-right: 10px;
+}
+.rgfm_wrapper .checkbox_hover{
+    background:url(../img/checkbox_hover.png) no-repeat 100%;
+}
+.rgfm_wrapper .checkbox_checked {
+    background:url(../img/checkbox_on.png) no-repeat 100%;
+}
+.rgfm_wrapper .or{
+    color: #A0A0A0;
+    margin: 1px 9px;
+    font-size: 15px;
+}
+.rgfm_wrapper .field-help-icon{
+    display: none;
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    margin-left: 245px;
+    margin-top: -36px;
+}
+.rgfm_wrapper.subscribe-bottom .field-help-icon{
+    margin-top: 10px;
+    margin-left: 240px;
+}
+.rgfm_wrapper .field-help-icon:hover{
+    cursor: pointer;
+}
+.rgfm_wrapper .help-icon{
+    display: block;
+    background-image: url("../img/help-icon.png");
+}
+.rgfm_wrapper .help-icon-hide{
+    display: block;
+    background-image: url("../img/help-icon-hide.png");
+}
+.rgfm_wrapper .help-icon-hide:hover{
+    background-image: url("../img/help-icon-hover.png");
+}
+.rgfm_wrapper .password-icon{
+    display: block;
+    margin-top: -31px;
+    margin-left: 244px;
+    background-image: url("../img/eye_hide.png");
+}
+.rgfm_wrapper .password-icon:hover{
+    background-image: url("../img/eye_hover.png");
+}
+.rgfm_wrapper .password-icon:active{
+    background-image: url("../img/eye_show.png");
+}
+.rgfm_wrapper .password-icon-show{
+    background-image: url("../img/eye_show.png");
+}
+.rgfm_wrapper .wrapper-content input[type="checkbox"] {
+    visibility: hidden;
+}
+.rgfm_message-warning{
+    background-color: #ffc045!important;
+}
+.rgfm_message-error{
+    background-color: #f6565e!important;
+}
+.rgfm_message-success{
+    background-color: #a7ca3c!important;
+}
+.rgfm_wrapper .email-error{
+    border: 2px solid!important;
+    border-color: #f6565e!important;
+}
+.rgfm_wrapper .password-error{
+    border: 2px solid!important;
+    border-color: #f6565e!important;
+}
+.rgfm_wrapper .email-error-show{
+    display: block;
+    background-image: url("../img/email-error-show.png");
+}
+.rgfm_wrapper .email-error-hide{
+    display: block;
+    background-image: url("../img/email-error-hide.png");
+}
+.rgfm_wrapper .toggle-block{
+    display: none;
+}
+
+.rgfm_wrapper .field-calendar-icon{
+    background: url("../img/calendar-icon.png") no-repeat 100%;
+    width: 40px;
+    height: 40px;
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+.rgfm_wrapper .field-calendar-icon:hover{
+    background: url("../img/calendar-icon-hover.png") no-repeat 100%;
+    cursor: pointer;
+}
+.rgfm_wrapper .excursion-title{
+    margin-bottom: 20px;
+}
+.rgfm_wrapper .excursion-text{
+    margin-top: 10px;
+    display: none;
+}
+.rgfm_wrapper .companions-show{
+    margin: 5px 0 5px 15px;
+    display: block;
+}
+.rgfm_wrapper .companions-show-link{
+    font-size: 12px;
+    color: #3a3a3a;
+    text-decoration: none;
+    border-bottom: 1px dashed #3a3a3a;
+}
+.rgfm_wrapper .companions-show-link:hover{
+    color: #A0A0A0!important;
+    text-decoration: none;
+    cursor: pointer;
+    border-bottom: 1px dashed #3a3a3a;
+}
+.rgfm_wrapper .reg_form textarea{
+    background-color: rgb(243, 243, 243);
+    border-radius: 5px;
+    padding: 10px 15px;
+    height: 60px;
+    border: 0;
+    width: 100%;
+    font-size: 16px;
+    margin-top: 5px;
+}
+.rgfm_wrapper .companions-toggle{
+    display: none;
+}
+.rgfm_wrapper .subscription-code-confirm{
+    text-align: center;
+    margin-top: 35px;
+}
+.rgfm_wrapper .id_code{
+    width: 150px!important;
+}
+
+.rgfm_wrapper .callback_field{
+    position: relative;
+}
+.rgfm_wrapper .field-dropdown-icon{
+    background: url("../img/field-dropdown-icon.png") no-repeat 100%;
+    width: 40px;
+    height: 40px;
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.rgfm_wrapper .field-dropdown-icon:hover{
+    background: url("../img/field-dropdown-icon-active.png") no-repeat 100%;
+    cursor: pointer;
+}
+
+.rgfm_wrapper .field-dropdown-items{
+    display: none;
+    border: 2px solid  #80c1bb;
+    margin-top: -16px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.rgfm_wrapper .field-dropdown-item{
+    line-height: 40px;
+    padding-left: 16px;
+    margin: 0 -2px;
+}
+.rgfm_wrapper .field-dropdown-item:hover{
+    background-color: #00ab8b;
+    color: #f5f5f5;
+    cursor: pointer;
+}
+.rgfm_wrapper .field-dropdown-item:last-child:hover{
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding-top: 2px;
+    margin-bottom: -2px;
+    color: #f5f5f5;
+    cursor: pointer;
+}

@@ -16,14 +16,17 @@ class Common(Configuration):
         'django.contrib.sessions',
         'django.contrib.messages',
         'django.contrib.staticfiles',
+        'django.contrib.sites',
     )
 
     THIRD_PARTY_APPS = (
         'crispy_forms',  # Form layouts
         'floppyforms',
         'djcelery',
+        'pytils',
         'constance',
         'constance.backends.database',
+        'bootstrapform',
         'allauth',  # registration
         'allauth.account',  # registration
     )
@@ -98,13 +101,13 @@ class Common(Configuration):
             'OPTIONS': {
                 'context_processors': [
                     'django.contrib.auth.context_processors.auth',
-                    "allauth.account.context_processors.account",
                     'django.template.context_processors.debug',
                     'django.template.context_processors.i18n',
                     'django.template.context_processors.media',
                     'django.template.context_processors.static',
                     'django.template.context_processors.tz',
                     'django.template.context_processors.request',
+                    "allauth.account.context_processors.account",
                     'django.contrib.messages.context_processors.messages',
                     'constance.context_processors.config',
                 ],
@@ -147,7 +150,7 @@ class Common(Configuration):
     ACCOUNT_USER_MODEL_USERNAME_FIELD = None
     ACCOUNT_CONFIRM_EMAIL_ON_GET = True
     ACCOUNT_LOGOUT_ON_GET = True
-    ACCOUNT_ADAPTER = 'registration.views.AccountAdapter'
+    #ACCOUNT_ADAPTER = 'registration.views.AccountAdapter'
     #SOCIALACCOUNT_QUERY_EMAIL = True
     #SOCIALACCOUNT_EMAIL_REQUIRED = True
     #SOCIALACCOUNT_AUTO_SIGNUP = True
@@ -181,7 +184,7 @@ class Local(Common):
     SERVER_EMAIL = DEFAULT_FROM_EMAIL
     ADMIN_EMAILS = ['korneevm@gmail.com']
 
-    MANDRILL_KEY = 'kG5UYf0RVBhrHu5FTptHmg'
+    MANDRILL_KEY = 'kd7IC8q0hA5K0PRZVLD51A'
 
     DATABASES = {
         'default': {
