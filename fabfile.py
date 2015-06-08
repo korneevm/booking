@@ -20,7 +20,7 @@ def deploy():
     with virtualenv():
         with cd(env.project):
             run('git pull')
-            run('pip install -r ./config/requirements.txt')
+            run('pip install -q -r ./config/requirements.txt')
             run('envdir %s/envdir/ python manage.py migrate' % env.homedir)
             run('envdir %s/envdir/ python manage.py collectstatic -v0 --noinput' % env.homedir)
             run('touch %s' % env.reload)
