@@ -1,8 +1,14 @@
 # coding: utf-8
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.db import models
+from django.dispatch import receiver
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
+
+from allauth.account.signals import user_signed_up
+from constance import config
+
+from .utils import send_mandrill_email
 
 
 class UserManager(BaseUserManager):
@@ -33,6 +39,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(u'Имя', max_length=150, null=True, blank=True)
     last_name = models.CharField(u'Фамилия', max_length=150, null=True, blank=True)
     email = models.EmailField(u'E-mail', unique=True, blank=True)
+
+    startup_name = models.CharField(u'Название стартапа', max_length=250, null=True, blank=True)
 
     is_staff = models.BooleanField(_('staff status'), default=False,
                                    help_text=_('Designates whether the user can log into this admin site.'))
@@ -93,3 +101,16 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def can_order_pass(self):
         return self.permission_granted or self.is_staff
+
+
+@receiver(user_signed_up)
+def user_signed_up_(request, **kwargs):
+    user = kwargs.pop('user')
+    data = [
+        {'name': u'user_email', 'content': user.email},
+        {'name': u'user_first_name', 'content': user.first_name},
+        {'name': u'user_last_name', 'content': user.last_name},
+        {'name': u'startup_name', 'content': user.startup_name},
+        ]
+    result = send_mandrill_email('new-user-signin', config.ORDERS_ADMIN_EMAIL, '', data)
+    return result

@@ -155,6 +155,7 @@ class Common(Configuration):
     #SOCIALACCOUNT_EMAIL_REQUIRED = True
     #SOCIALACCOUNT_AUTO_SIGNUP = True
     ACCOUNT_EMAIL_VERIFICATION = 'none'
+    ACCOUNT_SIGNUP_FORM_CLASS = 'users.forms.SignupForm'
 
     AUTH_USER_MODEL = "users.User"
     LOGIN_REDIRECT_URL = "index"
@@ -163,6 +164,7 @@ class Common(Configuration):
     CONSTANCE_CONFIG = {
         'PROFILE_BOOKING_CALENDAR_DAYS': (5, u'Количество дней для прокрутки в календаре при бронировании переговорки'),
         'ORDERS_EMAIL': ('reception2@bk.ru', u'E-mail, на который высылается информация о заказе пропусков'),
+        'ORDERS_ADMIN_EMAIL': ('mike@tceh.com', u'E-mail, на который приходят уведомления о новых регистриацих'),
         'ORDERS_DAYS': (11, u'Количество дней наперед, доступные для заказа пропусков'),
         'BOOKING_HOURS': (2, u'Количество часов в день, доступное для бронирования переговорок, на стартап'),
     }
@@ -184,7 +186,7 @@ class Local(Common):
     SERVER_EMAIL = DEFAULT_FROM_EMAIL
     ADMIN_EMAILS = ['korneevm@gmail.com']
 
-    MANDRILL_KEY = 'kd7IC8q0hA5K0PRZVLD51A'
+    MANDRILL_KEY = ''
 
     DATABASES = {
         'default': {

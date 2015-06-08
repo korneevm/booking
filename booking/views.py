@@ -23,7 +23,8 @@ from startups.models import Startup
 from .forms import BookingForm, OrderForm, OrderAdminForm, get_months, get_days, get_days_staff,\
     get_hours, get_initial_hour, get_initial_minutes, get_minutes, get_years, get_initial_day
 from .models import Booking, MeetingRoom, Order
-from .utils import can_book, send_order_pass_mandrill, check_mandrill_status
+from .utils import can_book, send_order_pass_mandrill
+from users.utils import check_mandrill_status
 
 
 class BookingIndexView(View):

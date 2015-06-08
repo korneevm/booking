@@ -30,3 +30,15 @@ class UserChangeForm(ChangeForm):
     class Meta:
         model = User
         fields = '__all__'
+
+
+class SignupForm(forms.Form):
+    first_name = forms.CharField(max_length=150, label=u'Имя')
+    last_name = forms.CharField(max_length=150, label=u'Фамилия')
+    startup_name = forms.CharField(max_length=250, label=u'Название стартапа')
+
+    def signup(self, request, user):
+        user.first_name = self.cleaned_data['first_name']
+        user.last_name = self.cleaned_data['last_name']
+        user.startup_name = self.cleaned_data['startup_name']
+        user.save()
