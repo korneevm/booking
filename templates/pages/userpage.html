@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}"/>
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}" ></script>
+    <script type="text/javascript" src="https://addthisevent.com/libs/1.6.0/ate.min.js"></script>
     {% endblock head_static %}
 	<title>{% block title %}Профиль {{request.user.get_full_name}}{% endblock title %}</title>
     {% block head_script %}
